@@ -3,7 +3,7 @@
 
 using namespace std;
 
-vector<vector<int>> generateMtx (int n){
+vector<vector<int>> createMtx (int n){
     vector<vector<int>> mtx (n, vector<int>(n, 0));
 
     // Determino que el valor de la posicion [0][0] es 1
@@ -18,6 +18,11 @@ vector<vector<int>> generateMtx (int n){
     return mtx;
 }
 
+vector<vector<int>> printMtx (vector<vector<int>> matrix) {
+
+
+}
+
 int main () {
     int n;
     cout << "Ingrese el tamaño de la matriz: ";
@@ -27,4 +32,8 @@ int main () {
         cout << "Ingrese un valor de n valido (debe ser mayor a 1): ";
         cin >> n;
     }
+
+    vector<vector<int>> matrix = createMtx(n);
+
+    return 0;
 }
