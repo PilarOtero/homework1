@@ -18,9 +18,14 @@ vector<vector<int>> createMtx (int n){
     return mtx;
 }
 
-vector<vector<int>> printMtx (vector<vector<int>> matrix) {
-
-
+void printMtx (vector<vector<int>> matrix, int n) {
+    //Aprovechando que la matriz es cuadrada y los valores estan ordenados, los imprimo los valores desde [n][n-1] hasta [0][0]
+    for (int i = n * n - 1; i >= 0; i --){
+        int row = i / n;
+        int column = i % n;
+   
+        cout << "M["<< row << "][" << column << "] = " << matrix[row][column] << endl;
+    }
 }
 
 int main () {
@@ -34,6 +39,7 @@ int main () {
     }
 
     vector<vector<int>> matrix = createMtx(n);
+    printMtx(matrix, n);
 
     return 0;
 }
