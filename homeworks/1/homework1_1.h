@@ -3,4 +3,4 @@
 
 using namespace std;
 
-vector<vector<int>> generateMtx (int n)
+vector<vector<int>> generateMtx (int n);
