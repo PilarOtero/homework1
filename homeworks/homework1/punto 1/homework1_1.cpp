@@ -19,7 +19,7 @@ vector<vector<int>> createMtx (int n){
 }
 
 void printMtx (vector<vector<int>> matrix, int n) { 
-    //Aprovechando que la matriz va en orden creciente, imprimo los valores desde [n][n -1] hasta [0][0]
+    //Aprovechando que la matriz va en orden creciente, imprimo los valores desde Mtx[n][n] hasta Mtx[0][0]
     for (int i = n * n - 1; i >= 0; i --){
         int row = i / n;
         int column = i % n;
