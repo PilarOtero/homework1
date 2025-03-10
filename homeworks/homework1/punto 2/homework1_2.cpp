@@ -4,15 +4,15 @@
 
 using namespace std;
 
-enum class Severity {DEBUG, INFO, WARNING, ERROR, CRITICAL};
+enum class Severity {DEBUG = 1, INFO = 2, WARNING = 3, ERROR = 4, CRITICAL = 5};
 
-int get_severity (Severity level){
-    switch (level){
-        case Severity:: DEBUG: return 5;
-        case Severity:: INFO: return 4;
-        case Severity:: WARNING: return 3;
-        case Severity:: ERROR: return 2;
-        case Severity:: CRITICAL: return 1;
+
+void logMessage (string message, Severity severity){
+    ofstream file("log.txt", ios::app); 
+
+    if (! file){
+        cout << "Error al abrir el archivo" << endl;
+        return;
     }
+    file << "[" << get_severity(severity) << "]" << message << endl;
 }
-
