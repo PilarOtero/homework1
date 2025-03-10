@@ -4,24 +4,36 @@
 
 using namespace std;
 
-enum class Severity {DEBUG = 1, INFO = 2, WARNING = 3, ERROR = 4, CRITICAL = 5};
+enum class Severity {DEBUG, INFO, WARNING, ERROR, CRITICAL};
 
-void logMessage (string message, int severity){
+string get_severity (Severity severity){
+    switch (severity){
+        case Severity :: DEBUG: return "DEBUG";
+        case Severity :: INFO: return "INFO";
+        case Severity :: WARNING: return "WARNING";
+        case Severity :: ERROR: return "ERROR";
+        case Severity :: CRITICAL: return "CRITICAL";  
+        default: return "UNKNOWN"; 
+    }
+}
+
+void logMessage (string message, Severity severity){
     ofstream file("log.txt", ios::app); 
 
     if (! file){
         cout << "Error al abrir el archivo" << endl;
         return;
     }
-    file << "[" << severity << "]" << "<" << message << ">" << endl;
+    file << "[" << get_severity(severity) << "]" << " <" << message << ">" << endl;
+    file.close();
 }
 
 int main (){
-    logMessage ("Debug message", static_cast<int>(Severity::DEBUG));
-    logMessage ("Info message", static_cast<int>(Severity::INFO));
-    logMessage ("Warning message", static_cast<int>(Severity::WARNING));       
-    logMessage ("Error message", static_cast<int>(Severity::ERROR));
-    logMessage ("Critical message", static_cast<int>(Severity::CRITICAL));
+    logMessage ("Debug message", Severity::DEBUG);
+    logMessage ("Info message", Severity::INFO);
+    logMessage ("Warning message", Severity::WARNING);       
+    logMessage ("Error message", Severity::ERROR);
+    logMessage ("Critical message", Severity::CRITICAL);
 
     return 0;
 }
