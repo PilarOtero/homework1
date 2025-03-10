@@ -18,15 +18,28 @@ string get_severity (Severity severity){
 }
 
 void logMessage (string message, Severity severity){
-    ofstream file("log.txt", ios::app); 
+    ofstream logfile("test.txt", ios::app); 
 
-    if (! file){
+    if (! logfile){
         cout << "Error al abrir el archivo" << endl;
         return;
     }
-    file << "[" << get_severity(severity) << "]" << " <" << message << ">" << endl;
-    file.close();
+    
+    logfile << "[" << get_severity(severity) << "]" << " <" << message << ">" << endl;
+    logfile.close();
 }
+
+void logMessage (string message, string file, int line){
+    ofstream messagesfile ("test.txt", ios::app);
+
+    if (! messagesfile){
+        cout << "Error al abrir el archivo" << endl;
+        return;
+    }   
+
+    messagesfile << "[ERROR]" << message << "in line " << line << "from file " << file << endl;
+ }
+
 
 int main (){
     logMessage ("Debug message", Severity::DEBUG);
@@ -37,3 +50,4 @@ int main (){
 
     return 0;
 }
+
