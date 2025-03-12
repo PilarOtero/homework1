@@ -1,0 +1,24 @@
+[DEBUG] <Debug message>
+[INFO] <Info message>
+[WARNING] <Warning message>
+[ERROR] <Error message>
+[CRITICAL] <Critical message>
+[WARNING] <No>
+[DEBUG] <Debug message>
+[INFO] <Info message>
+[WARNING] <Warning message>
+[ERROR] <Error message>
+[CRITICAL] <Critical message>
+[DEBUG] <Debug message>
+[INFO] <Info message>
+[WARNING] <Warning message>
+[ERROR] <Error message>
+[CRITICAL] <Critical message>
+[ERROR] <No me carga>
+[DEBUG] <Debug message>
+[INFO] <Info message>
+[WARNING] <Warning message>
+[ERROR] <Error message>
+[CRITICAL] <Critical message>
+[CRITICAL] <no>
+[ERROR]noin line 62from file homework1_2.cpp

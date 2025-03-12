@@ -4,7 +4,7 @@
 
 using namespace std;
 
-enum class Severity {DEBUG, INFO, WARNING, ERROR, CRITICAL};
+enum class Severity {DEBUG, INFO, WARNING, ERROR, CRITICAL, SECURITY};
 
 string get_severity (Severity severity){
     switch (severity){
@@ -37,17 +37,30 @@ void logMessage (string message, string file, int line){
         return;
     }   
 
-    messagesfile << "[ERROR]" << message << "in line " << line << "from file " << file << endl;
+    messagesfile << "[ERROR] <" << message << "in line " << line << "from file " << file << ">" << endl;
  }
 
 
+
+
 int main (){
+    int severity;
+    string message; 
+
     logMessage ("Debug message", Severity::DEBUG);
     logMessage ("Info message", Severity::INFO);
     logMessage ("Warning message", Severity::WARNING);       
     logMessage ("Error message", Severity::ERROR);
     logMessage ("Critical message", Severity::CRITICAL);
+    
 
-    return 0;
+    cout << "Ingrese la severidad de su problema (0 - 4): ";
+    cin >> severity;
+    cout << "Ingrese el problema: ";
+    cin.ignore();
+    getline(cin, message);
+
+    logMessage(message, static_cast<Severity>(severity));
+    logMessage(message, __FILE__, __LINE__);
 }
 
