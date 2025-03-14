@@ -89,6 +89,8 @@ int main (){
     logMessage(Severity::SECURITY, access_message, username);
 
     logfile.close();
+
+    
     
     return 0;
 }
