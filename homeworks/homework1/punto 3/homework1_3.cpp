@@ -13,23 +13,19 @@ struct list {
     unique_ptr<node> * tail;    
 };
 
-node * create_node(int value){
-    node * created_node = new node;
-    created_node->next = nullptr;
-    created_node->value = value;
-    
-    return created_node;
+unique_ptr<node> create_node(int value){
+    return make_unique<node>(value, nullptr);
 }
 
 void push_front(list * linkedlist, int value){
-    node * head = create_node(value);
+    unique_ptr<node> new_head = create_node(value);
 
-    head->next = linkedlist->head;
-    linkedlist->head = head;
+    new_head->next = move(linkedlist->head);
+    linkedlist->head = move(new_head);
 
 
     if (!linkedlist->tail){
-        linkedlist->tail = head;
+        linkedlist->tail = new_head.get();
     }
 }
 
