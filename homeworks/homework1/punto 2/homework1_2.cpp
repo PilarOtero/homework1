@@ -56,42 +56,43 @@ void logMessage (string message, string file, int line){
 //FALTA EL IV REQUISITO
 
 int main (){
-    int severity;
-    string message; 
-    ofstream logfile("log.txt", ios::trunc);
+    try {
+        int severity;
+        string message; 
+        ofstream logfile("log.txt", ios::trunc);
 
-    //Test mensajes NO personalizados
-    string line = "Testing...";
-    logfile << line << endl;
+        string access_message, username;
+        
+        cout << "Ingrese la severidad de su problema (1 = DEBUB, 2 = INFO, 3 = WARNING, 4 = ERROR, 5 = CRITICAL, 6  SECURITY): ";
+        cin >> severity;
 
-    logMessage ("Debug message", Severity::DEBUG);
-    logMessage ("Info message", Severity::INFO);
-    logMessage ("Warning message", Severity::WARNING);       
-    logMessage ("Error message", Severity::ERROR);
-    logMessage ("Critical message", Severity::CRITICAL);
-
-    ////VER logfile << "End of the test" << endl;
-
-    cout << "Ingrese la severidad de su problema (1 - 4): ";
-    cin >> severity;
-    cout << "Ingrese el problema: ";   
-    cin.ignore(); getline(cin, message);
-    
-    logMessage(message, static_cast<Severity>(severity));
-    logMessage(message, __FILE__, __LINE__);
-
-    string access_message, username;
-    cout << "Ingrese el mensaje de acceso: ";
-    cin.ignore(); getline(cin, access_message);
-    cout << "Ingrese su username: ";
-    cin >> username;
-
-    logMessage(Severity::SECURITY, access_message, username);
-
-    logfile.close();
+        switch (severity){
+            case 4: break;
+            case 6: 
+                cout << "Ingrese el mensaje de acceso: ";
+                cin.ignore(); getline(cin, access_message);
+                cout << "Ingrese su username: ";
+                cin >> username;
+        
+                logMessage(Severity::SECURITY, access_message, username);
+                break;
+            default: 
+                cout << "Ingrese el problema: ";   
+                cin.ignore(); getline(cin, message);
+            
+                logMessage(message, static_cast<Severity>(severity));
+                break;
+        }
+        
 
     
-    
-    return 0;
+        logfile.close();
+        return 0;
+    }   
+    catch (runtime_error &e){
+        logMessage(e.what(), __FILE__, __LINE__);
+        return 1;
+    }
+
 }
 

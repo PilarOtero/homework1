@@ -1,10 +1,2 @@
 Testing...
-End of the test
-ssage>
-[INFO]<Info message>
-[WARNING]<Warning message>
-[ERROR]<Error message>
-[CRITICAL]<Critical message>
-[ERROR]<e>
-[ERROR] <e> in line 80 from file homework1_2.cpp
-[SECURITY]<> logged in by c
+[ERROR] <Error de prueba> in line 88 from file homework1_2.cpp

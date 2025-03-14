@@ -5,12 +5,11 @@ using namespace std;
 
 struct node {
     int value;
-    unique_ptr<node> * next;
+    unique_ptr<node> next;
 };
 
 struct linkedList {
-    unique_ptr<node> * head;
-    unique_ptr<node> * tail;    
+    unique_ptr<node> head;   
     int size;
 };
 
@@ -22,28 +21,24 @@ void push_front(linkedList * list, int value){
     unique_ptr<node> new_head = create_node(value);
 
     new_head->next = move(list->head);
-    list->head = std::move(new_head);
+    list->head = move(new_head);
 
-
-    if (! list->tail){
-        list->tail = new_head.get();
-    }
-    
     list->size++;
 }   
 
 void push_back(linkedList * list, int value){
     unique_ptr<node> new_tail = create_node(value);
+   
+    if (! list->head) list->head = move(new_tail);
+    else{
+        node * current = list->head.get();
 
-    if (list->tail){
-        list->tail->next = move(new_tail);
-        list->tail = list->tail->next.get();
-
-    } else{
-        list->head = move(new_tail);
-        list->tail = list->head.get();
+        while (current->next){
+            current = current->next.get();  
+        }
+        //Defino el nuevo nodo como el nodo final de la lista
+        current->next = move(new_tail);
     }
-
     list->size++;
 }
 
