@@ -1,12 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "homework1_2.h"
 
-using namespace std;
-
-enum class Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY};
-
-string get_severity (Severity severity){
+const string get_severity (Severity severity){
     switch (severity){
         case Severity :: DEBUG: return "DEBUG";
         case Severity :: INFO: return "INFO";

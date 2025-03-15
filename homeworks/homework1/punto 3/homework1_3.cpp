@@ -50,9 +50,8 @@ void insert(unique_ptr<forwardList> &list, int value, int position){
     if (position < 0) throw invalid_argument("La posicion debe ser mayor a 0"); 
     
     //La posicion es mayor al tamaño de la lista
-    if (position > list->size){
-        cout << "La posicion indicada se encuentra fuera del rango de la lista" << endl;
-        position = list->size;
+    if (position >= list->size){
+        position = list->size; 
     }
     
     //El nodo se inserta como tail
@@ -80,8 +79,9 @@ void erase(unique_ptr<forwardList> &list, int position){
     
     if (position >= list->size){
         cout << "La posicion indicada se encuentra fuera del rango de la lista." << endl;
-        position = position - 1;
+        position = list->size - 1;
     }
+
     if (position == 0){
         list->head = move(list->head->next);
         list->size --;
@@ -93,10 +93,12 @@ void erase(unique_ptr<forwardList> &list, int position){
     for (int i = 0; i < position - 1; i ++){
         current = current->next.get();
     }
+
     current->next = move(current->next->next);
     list->size --;
-
 }
+
+
 
 void print_list(unique_ptr<forwardList> &list){
     node * current = list->head.get();
