@@ -63,10 +63,7 @@ int main (){
 
         switch (severity){
             case 4: 
-                //throw (runtime_error ("Error de prueba")){
-                    //logMessage(e.what(), __FILE__, __LINE__);
-                    //return 1;
-                //}
+                break;
             case 6: 
                 cout << "Ingrese el mensaje de acceso: ";
                 cin.ignore(); getline(cin, access_message);
@@ -88,7 +85,9 @@ int main (){
         logfile.close();
         return 0;
     }   
-
-
+    catch (runtime_error &e){
+        logMessage(e.what(), __FILE__, __LINE__);
+        return 1;
+    }
 }
 
