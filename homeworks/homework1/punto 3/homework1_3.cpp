@@ -47,8 +47,10 @@ void push_back(unique_ptr<forwardList> &list, int value){
 }
 
 void insert(unique_ptr<forwardList> &list, int value, int position){
-    if (position < 0) throw invalid_argument("La posicion debe ser mayor a 0"); 
-    
+    if (position < 0){
+        cout << "La posicion debe ser mayor a 0" << endl;
+    }
+
     //La posicion es mayor al tamaño de la lista
     if (position >= list->size){
         position = list->size; 
@@ -75,7 +77,9 @@ void insert(unique_ptr<forwardList> &list, int value, int position){
 
 
 void erase(unique_ptr<forwardList> &list, int position){
-    if (position < 0) throw invalid_argument("La posicion debe ser mayor a 0");
+    if (position < 0){
+        cout << "La posicion debe ser mayor a 0" << endl;
+    }
     
     if (position >= list->size){
         cout << "La posicion indicada se encuentra fuera del rango de la lista." << endl;
