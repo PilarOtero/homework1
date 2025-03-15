@@ -53,8 +53,6 @@ void logMessage (string message, string file, int line){
     accessfile << "[" << get_severity(severity) << "]<" << access_message << "> logged in by " << username << endl;
 }
 
-//FALTA EL IV REQUISITO
-
 int main (){
     try {
         int severity;
