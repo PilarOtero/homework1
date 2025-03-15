@@ -27,7 +27,7 @@ void push_front(forwardList * list, int value){
     new_head->next = move(list->head);
     list->head = move(new_head);
 
-    list->size++;
+    list->size ++;
 }   
 
 void push_back(forwardList * list, int value){
@@ -40,10 +40,10 @@ void push_back(forwardList * list, int value){
         while (current->next){
             current = current->next.get();  
         }
-        //Defino el nuevo nodo como el nodo final de la lista
+        //Defino el nuevo nodo como el ultimo de la lista
         current->next = move(new_tail);
     }
-    list->size++;
+    list->size ++;
 }
 
 void insert(forwardList * list, int value, int position){
@@ -73,15 +73,29 @@ void insert(forwardList * list, int value, int position){
 
         new_node->next = move(current->next);
         current->next = move(new_node);
-        list->size++;
+        list->size ++;
     }
 }
 
-void erase(forwardList * list, int value, int position){
+void erase(forwardList * list, int position){
     if (position > list->size){
         cout << "La posicion indicada se encuentra fuera del rango de la lista:" << endl;
-        push_back(list, value);
+        position = list->size - 1;
     }
+    if (position == 0){
+        list->head = move(list->head->next);
+    }
+    else {
+        node * current = list->head.get();
+        int current_pos = 0;
+
+        while (current_pos < position - 1){
+            current = current->next.get();
+            current_pos++;
+        }
+        current->next = move(current->next->next);
+    }
+    list->size --;
     
 }
 
