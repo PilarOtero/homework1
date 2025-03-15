@@ -1,7 +1,6 @@
 #include <iostream>
 #include <memory>
-
-using namespace std;
+#include "main.h"
 
 struct node {
     int value;
@@ -49,6 +48,7 @@ void push_back(unique_ptr<forwardList> &list, int value){
 void insert(unique_ptr<forwardList> &list, int value, int position){
     if (position < 0){
         cout << "La posicion debe ser mayor a 0" << endl;
+        return;
     }
 
     //La posicion es mayor al tamaño de la lista
@@ -79,6 +79,7 @@ void insert(unique_ptr<forwardList> &list, int value, int position){
 void erase(unique_ptr<forwardList> &list, int position){
     if (position < 0){
         cout << "La posicion debe ser mayor a 0" << endl;
+        return;
     }
     
     if (position >= list->size){
@@ -116,40 +117,45 @@ void print_list(unique_ptr<forwardList> &list){
 int main(){
     unique_ptr<forwardList> list = make_unique<forwardList>();
 
-    cout << "Push front de elementos en la lista " << endl;
+    cout << "PUSH FRONT DE ELEMENTOS" << endl;
     push_front(list, 3);
     push_front(list, 2);
     push_front(list, 1);
     push_front(list, 0);
-
     print_list(list);
+    cout << "\n" << endl;
 
-    cout << "Push back de elementos en la lista: " << endl;
+    cout << "PUSH BACK DE ELEMENTOS " << endl;
     push_back(list, 4);
     push_back(list, 6);
     print_list(list);
+    cout << "\n" << endl;
 
-    cout << "Insert en la posicion 5" << endl;
+    cout << "INSERT EN POSICION 5" << endl;
     insert(list, 5, 5);
     cout << "Lista despues de insertar el elemento: ";
     print_list(list);
+    cout << "\n" << endl;
 
-    cout << "Insert en posicion que no existe" << endl;
+    cout << "INSERT EN POSICION QUE NO EXISTE" << endl;
     insert(list, 7, 10);
     cout << "Lista despues de insertar el elemento: ";
     print_list(list);
+    cout << "\n" << endl;
     
-    cout << "Erase del elemento en la posicion 0" << endl;
+    cout << "ERASE DEL ELEMENTO EN LA POSICION 0" << endl;
     erase(list, 0); 
     cout << "Lista despues de borrar el elemento: ";
     print_list(list);
-
-    cout << "Erase elemento en posicion invalida" << endl;
+    cout << "\n" << endl;
+    //VER POR QUE SE ELIMINA EL 2
+    cout << "ERASE DE ELEMENTO EN POSICION INVALIDA" << endl;
     erase(list, -1);
     cout << "Lista despues de borrar el elemento: ";
     print_list(list);
+    cout << "\n" << endl;
 
-    cout << "Erase elemento en posicion que no existe" << endl;
+    cout << "ERASE EN POSICION MAYOR AL LARGO DE LA LISTA" << endl;
     erase(list, 10);
     cout << "Lista despues de borrar el elemento: ";
     print_list(list);

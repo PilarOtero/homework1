@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
+#include "main.h"
 
 vector<vector<int>> createMtx (int n){
     vector<vector<int>> mtx (n, vector<int>(n, 0));

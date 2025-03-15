@@ -1,7 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "homework1_2.h"
+#include "main.h"
 
 const string get_severity (Severity severity){
     switch (severity){
@@ -36,7 +33,8 @@ void logMessage (string message, string file, int line){
         return;
     }   
 
-    messagesfile << "[ERROR] <" << message << "> in line " << line << " from file " << file << endl;
+    messagesfile << "[ERROR] <" << message << " in line " << line << " from file " << file << ">" << endl;
+    messagesfile.close();
  }
 
  void logMessage (Severity severity, string access_message, string username){
@@ -48,44 +46,53 @@ void logMessage (string message, string file, int line){
     }
 
     accessfile << "[" << get_severity(severity) << "]<" << access_message << "> logged in by " << username << endl;
+    accessfile.close();
+}
+
+void security (){
+    string access_message, username;
+
+    cout << "Ingrese el mensaje de acceso: ";
+    cin.ignore(); getline(cin, access_message);
+    cout << "Ingrese su username: ";
+    getline(cin, username);
+
+    logMessage(Severity::SECURITY, access_message, username);
+}
+
+void message(Severity severity){
+    string message;
+
+    cout << "Ingrese el problema: ";   
+    cin.ignore(); getline(cin, message);
+
+    logMessage(message, severity);
 }
 
 int main (){
     try {
         int severity;
-        string message; 
         ofstream logfile("log.txt", ios::trunc);
 
-        string access_message, username;
-        
-        cout << "Ingrese la severidad de su problema (1 = DEBUB, 2 = INFO, 3 = WARNING, 4 = ERROR, 5 = CRITICAL, 6  SECURITY): ";
+        cout << "Ingrese la severidad de su problema (1-DEBUG, 2-INFO, 3-WARNING, 4-ERROR, 5-CRITICAL, 6-SECURITY, 7-TRAGIC): ";
         cin >> severity;
 
         switch (severity){
-            case 4: 
-                break;
             case 6: 
-                cout << "Ingrese el mensaje de acceso: ";
-                cin.ignore(); getline(cin, access_message);
-                cout << "Ingrese su username: ";
-                cin >> username;
-        
-                logMessage(Severity::SECURITY, access_message, username);
+                security();
+                break;
+            case 7: 
+                throw runtime_error("TRAGIC EVENT");
                 break;
             default: 
-                cout << "Ingrese el problema: ";   
-                cin.ignore(); getline(cin, message);
-            
-                logMessage(message, static_cast<Severity>(severity));
+                message(static_cast<Severity>(severity));
                 break;
         }
-        
-        logfile.close();
-        return 0;
     }   
     catch (runtime_error &e){
         logMessage(e.what(), __FILE__, __LINE__);
         return 1;
     }
+    return 0;
 }
 

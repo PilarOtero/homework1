@@ -1,8 +1,10 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
-enum Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY};
+enum Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY, TRAGIC};
 
 const string get_severity (Severity severity);
 
