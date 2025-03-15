@@ -3,7 +3,9 @@
 
 using namespace std;
 
-//JUSTIFICACION DE LA ELECCION DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, como en el caso de char *, no necesito liberar la memoria.
+/*JUSTIFICACION DE LA ELECCION DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, como en el caso de char *,
+no necesito liberar la memoria.*/
+
 bool equal_strings(string str1, string str2){
     //Si el largo de las cadenas es distinto, no son iguales
     if (str1.length() != str2.length()) return false;
@@ -16,10 +18,25 @@ bool equal_strings(string str1, string str2){
     return false;
 }
 
+constexpr bool equal_strings_compilation(const char * str1, const char *str2){
+    //CASO BASE: las 2 cadenas estan vacias
+    if (*str1 == '\0' && *str2 == '\0') return true;
+    
+    if (*str1 == '\0' || *str2 == '\0') return false;
+
+    if (*str1 == *str2) return equal_strings_compilation(str1 + 1, str2 + 1);
+    return false;
+
+}
+
 int main(){
     string str1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     string str2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     string str3 = "Hola mundo";
+
+    const char * char1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
+    const char * char2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
+    const char * char3 = "Hola mundo";
     
     cout << "string1: " << str1 << "\n" << "string2: " << str2 << endl;
     if (equal_strings(str1, str2)){
@@ -36,6 +53,26 @@ int main(){
     else {
         cout << "No son iguales" << endl;
     }
+
+    //VERIFICACION EN TIEMPO DE COMPILACION
+    cout << "\nVERIFICACION EN TIEMPO DE COMPILACION\n" << endl;
+    cout << "char1: " << char1 << "\n" << "char3: " << char3 << endl;
+    
+    if (equal_strings_compilation(char1, char3)){
+        cout << "Son iguales" << endl;
+    }
+    else {
+        cout << "No son iguales" << endl;
+    }
+
+    cout << "\nchar1: " << char1 << "\n" << "char2: " << char2 << endl;
+    if (equal_strings_compilation(char1, char2)){
+        cout << "Son iguales" << endl;
+    }
+    else {
+        cout << "No son iguales" << endl;
+    }
+
     return 0;
 }
 
