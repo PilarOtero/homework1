@@ -1,2 +1,1 @@
-Testing...
-[ERROR] <Error de prueba> in line 88 from file homework1_2.cpp
+[WARNING]<hola>
