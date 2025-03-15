@@ -98,8 +98,6 @@ void erase(unique_ptr<forwardList> &list, int position){
     list->size --;
 }
 
-
-
 void print_list(unique_ptr<forwardList> &list){
     node * current = list->head.get();
 

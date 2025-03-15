@@ -80,8 +80,6 @@ int main (){
                 break;
         }
         
-
-    
         logfile.close();
         return 0;
     }   
