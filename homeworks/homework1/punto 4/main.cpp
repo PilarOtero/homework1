@@ -21,15 +21,17 @@ int main(){
     string str2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     string str3 = "Hola mundo";
     
+    cout << "string1: " << str1 << "\n" << "string2: " << str2 << endl;
     if (equal_strings(str1, str2)){
-        cout << "string1: " << str1 << "\n" << "string2: " << str2 << "\nSon iguales" << endl;
+        cout << "Son iguales" << endl;
     }
     else {
         cout << "No son iguales" << endl;
     }
-    
+
+    cout << "\nstring1: " << str1 << "\n" << "string3: " << str3 << endl;
     if (equal_strings(str1, str3)){
-        cout << "string1: " << str1 << "\n" << "string3: " << str3 << "\nSon iguales" << endl;
+        cout << "\nSon iguales" << endl;
     }
     else {
         cout << "No son iguales" << endl;
