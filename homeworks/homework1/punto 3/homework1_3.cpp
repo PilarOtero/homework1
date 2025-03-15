@@ -66,7 +66,7 @@ void insert(forwardList * list, int value, int position){
         node * current = list->head.get();
         int current_pos = 0;
 
-        while (current_pos < position){
+        while (current_pos < position - 1){
             current = current->next.get();
             current_pos++;
         }
@@ -105,7 +105,7 @@ void print_list(forwardList * list){
         cout << current->value << "->";
         current = current->next.get();
     }
+    cout << "nullptr";
     cout << "\n";
 }
-
 
