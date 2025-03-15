@@ -4,7 +4,7 @@
 
 using namespace std;
 
-enum Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY, TRAGIC};
+enum class Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY, TRAGIC};
 
 const string get_severity (Severity severity);
 
