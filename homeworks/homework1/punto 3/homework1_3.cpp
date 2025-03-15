@@ -96,7 +96,16 @@ void erase(forwardList * list, int position){
         current->next = move(current->next->next);
     }
     list->size --;
-    
+}
+
+void print_list(forwardList * list){
+    node * current = list->head.get();
+
+    while (current){
+        cout << current->value << "->";
+        current = current->next.get();
+    }
+    cout << "\n";
 }
 
 
