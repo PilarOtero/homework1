@@ -51,7 +51,7 @@ void insert(forwardList * list, int value, int position){
 
     //La posicion es mayor al tamaño de la lista
     if (position > list->size){
-        cout << "La posicion indicada se encuentra fuera del rango de la lista:" << endl;
+        cout << "La posicion indicada se encuentra fuera del rango de la lista." << endl;
         push_back(list, value);
     }
     //El nodo se inserta como tail
@@ -78,13 +78,23 @@ void insert(forwardList * list, int value, int position){
 }
 
 void erase(forwardList * list, int position){
-    if (position > list->size){
-        cout << "La posicion indicada se encuentra fuera del rango de la lista:" << endl;
-        position = list->size - 1;
+    if (position >= list->size || position < 0){
+        cout << "La posicion indicada se encuentra fuera del rango de la lista." << endl;
+        
+        if (list->size > 0){
+            node * current = list->head.get();
+
+            if (list->size == 1) list->head = nullptr;
+            else {
+                while(current->next && current->next->next){
+                    current = current->next.get();
+                }
+                current->next = nullptr;
+            }
+        }
     }
-    if (position == 0){
-        list->head = move(list->head->next);
-    }
+    else if (position == 0) list->head = move(list->head->next);
+    
     else {
         node * current = list->head.get();
         int current_pos = 0;
@@ -109,3 +119,25 @@ void print_list(forwardList * list){
     cout << "\n";
 }
 
+int main(){
+    forwardList list;
+
+    push_front(&list, 0);
+    push_back(&list, 1);
+    push_back(&list, 2);
+    push_back(&list, 3);
+
+    cout << "Lista inicial:";
+    print_list(&list);
+
+    erase(&list, 3);
+    cout << "Lista despues de borrar el elemento:";
+    print_list(&list);
+
+    erase(&list, 1); //VER SEGMENTATION FAULT cuando saco uno fuera de rango
+    push_back(&list, 4);
+    cout << "Lista despues de borrar el elemento y agregar uno nuevo:";
+    print_list(&list);
+
+    return 0;
+}
