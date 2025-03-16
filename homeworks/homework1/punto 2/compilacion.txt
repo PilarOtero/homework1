@@ -1,0 +1,3 @@
+PARA COMPILAR EL ARCHIVO main.cpp ESCRIBIR EN LA TERMINAL:
+1- g++ -o main main.cpp
+2- ./main
