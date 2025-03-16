@@ -1,23 +1,22 @@
 #include <iostream>
 #include "main.h"
 
-/*JUSTIFICACION DE LA ELECCION DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, como en el caso de char *,
-no necesito liberar la memoria.*/
+/*JUSTIFICACIÓN DE LA ELECCION DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, 
+como en el caso de char *, no necesito liberar la memoria.*/
 
 bool equal_strings(string str1, string str2){
-    //Si las cadenas 2 estan vacias, son iguales
+    //Si las cadenas 2 están vacias, son iguales
     if (str1.empty() && str2.empty()) return true;
     
     //Si el largo de las cadenas es distinto, no son iguales
     if (str1.length() != str2.length()) return false;
 
-    //Si el primer caracter de la cadena es igual, se llama a la funcion con substr (crea un substring sin el primer caracter)
+    //Si el primer caracter de la cadena es igual, se llama a la función con substr (crea un substring sin el primer caracter)
     if (str1[0] == str2[0]) return equal_strings(str1.substr(1), str2.substr(1));
     return false;
 }
 
-/*Uso const char * para que el compilador pueda evaluar las variables en iempo de compilacion (usando string, al ser de memoria dinamia, 
-se evalua en la ejecucion) */
+
 constexpr int charlength(const char * str){
     if (*str == '\0') return 0;
     return 1 + charlength(str + 1);
@@ -34,6 +33,12 @@ constexpr bool equal_strings_compilation(const char * char1, const char *char2){
     return false;
 
 }
+/*CONCLUSIÓN:
+En este ultimo punto, elegi usar const char * para que el compilador pueda evaluar las variables en tiempo de compilación (usando string, 
+al alocar la memoria en forma dinámica, se evalúa en la ejecución, por lo que en funciones del tipo constexpr no es viable).
+Vemos, gracias a chornos, que al evaluar en tiempo de compilación, se tarda por lo menos 10 veces menos en comparar las cadenas, algo lógico al 
+realizar todo en la propia compilación. 
+*/
 
 int main(){
     string str1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
@@ -42,7 +47,7 @@ int main(){
     const char * char1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     const char * char2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     
-    cout << "VERIFICACION EN TIEMPO DE EJECUCION\n" << endl;
+    cout << "VERIFICACIÓN EN TIEMPO DE EJECUCIÓN\n" << endl;
     cout << "string1: " << str1 << "\n" << "string2: " << str2 << endl;
     if (equal_strings(str1, str2)){
         cout << "Son iguales" << endl;
@@ -61,8 +66,8 @@ int main(){
     cout << "Ver si los 2 strings eran iguales tomó: "<< elapsedTime1.count() << " nanosegundos" << endl;
 
 
-    //VERIFICACION EN TIEMPO DE COMPILACION
-    cout << "\nVERIFICACION EN TIEMPO DE COMPILACION\n" << endl;
+    //VERIFICACIÓN EN TIEMPO DE COMPILACIÓN
+    cout << "\nVERIFICACIÓN EN TIEMPO DE COMPILACIÓN\n" << endl;
     cout << "char1: " << char1 << "\n" << "char2: " << char2 << endl;
     
     if (equal_strings_compilation(char1, char2)){
