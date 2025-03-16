@@ -1,3 +1,4 @@
+#include <iostream>
 #include "main.h"
 
 vector<vector<int>> createMtx (int n){

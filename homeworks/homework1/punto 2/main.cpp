@@ -1,3 +1,6 @@
+#include <fstream>
+#include <string>
+#include <iostream>
 #include "main.h"
 
 const string get_severity (Severity severity){

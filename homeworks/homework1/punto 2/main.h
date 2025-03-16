@@ -1,7 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-
 using namespace std;
 
 enum class Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY, TRAGIC};

@@ -1,8 +1,5 @@
 #include <iostream>
-#include <string>
-#include <chrono>
-
-using namespace std;
+#include "main.h"
 
 /*JUSTIFICACION DE LA ELECCION DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, como en el caso de char *,
 no necesito liberar la memoria.*/
@@ -55,7 +52,6 @@ int main(){
     }
 
     //USANDO CHRONO
-    cout << "\n-UTILIZANDO LA LIBRERIA CHRONO" << endl;
     auto startTime1 = chrono::high_resolution_clock::now();
 
     auto endTime1 = chrono::high_resolution_clock::now();
@@ -77,7 +73,6 @@ int main(){
     }
 
     //USANDO CRHONO
-    cout << "\n-UTILIZANDO LA LIBRERIA CHRONO" << endl;
     auto startTime2 = chrono::high_resolution_clock::now();
     auto endTime2 = chrono::high_resolution_clock::now();
     auto elapsedTime2 = chrono::duration_cast<std::chrono::nanoseconds>(
