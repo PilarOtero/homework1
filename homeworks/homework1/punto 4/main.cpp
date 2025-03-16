@@ -7,24 +7,33 @@ using namespace std;
 no necesito liberar la memoria.*/
 
 bool equal_strings(string str1, string str2){
+    //Si las cadenas 2 estan vacias, son iguales
+    if (str1.empty() && str2.empty()) return true;
+    
     //Si el largo de las cadenas es distinto, no son iguales
     if (str1.length() != str2.length()) return false;
-
-    //Si las cadenas estan vacias, son iguales
-    if (str1.empty() && str2.empty()) return true;
 
     //Si el primer caracter de la cadena es igual, se llama a la funcion con substr (crea un substring sin el primer caracter)
     if (str1[0] == str2[0]) return equal_strings(str1.substr(1), str2.substr(1));
     return false;
 }
 
-constexpr bool equal_strings_compilation(const char * str1, const char *str2){
-    //CASO BASE: las 2 cadenas estan vacias
-    if (*str1 == '\0' && *str2 == '\0') return true;
-    
-    if (*str1 == '\0' || *str2 == '\0') return false;
+/*Uso const char * paara que el compilador pueda evaluar las variables en iempo de compilacion (usando string, al ser de memoria dinamia, 
+se evalua en la ejecucion) */
+constexpr int charlength(const char * str){
+    if (*str == '\0') return 0;
+    return 1 + charlength(str + 1);
+}
 
-    if (*str1 == *str2) return equal_strings_compilation(str1 + 1, str2 + 1);
+
+constexpr bool equal_strings_compilation(const char * char1, const char *char2){
+    //CASO BASE: las 2 cadenas estan vacias
+    if (*char1 == '\0' && *char2 == '\0') return true;
+    
+    //Si el largo de las cadenas es distinto
+    if (charlength(char1) != charlength(char2)) return false;
+
+    if (*char1 == *char2) return equal_strings_compilation(char1 + 1, char2 + 1);
     return false;
 
 }

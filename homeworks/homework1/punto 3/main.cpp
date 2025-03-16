@@ -148,7 +148,7 @@ int main(){
     cout << "Lista despues de borrar el elemento: ";
     print_list(list);
     cout << "\n" << endl;
-    //VER POR QUE SE ELIMINA EL 2
+
     cout << "ERASE DE ELEMENTO EN POSICION INVALIDA" << endl;
     erase(list, -1);
     cout << "Lista despues de borrar el elemento: ";
