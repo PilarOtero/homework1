@@ -1,2 +1,6 @@
-CÓMO COMPILAR LOS ARCHIVOS  
-Al acceder a la carpeta de cada punto, encontrarán un archivo, "compilacion.txt", donde está lo que se debe escribir en la terminal para compilar el archivo main.cpp
+ARCHIVOS  
+Al acceder a la carpeta de cada punto, encontrarán diversos archivos:   
+  1. main.h -> definición de las funciones
+  2. compilacion.txt -> como compilar el archivo
+  3. functions.cpp -> funciones 
+  4. main.cpp -> archivo main con el llamado a las funciones (archivo a compilar)
