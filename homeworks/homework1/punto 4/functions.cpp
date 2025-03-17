@@ -1,7 +1,6 @@
 #include <iostream>
 #include "main.h"
 
-
 /*JUSTIFICACIÓN DE LA ELECCIÓN DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, 
 como en el caso de char *, no necesito liberar la memoria.*/
 
