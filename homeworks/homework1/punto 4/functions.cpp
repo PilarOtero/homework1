@@ -17,14 +17,14 @@ bool equal_strings(string str1, string str2){
 }
 
 
-//VERIFICACION EN TIEMPO DE COMPILACION
+//VERIFICACIÓN EN TIEMPO DE COMPILACION
 constexpr int charlength(const char * str){
     if (*str == '\0') return 0;
     return 1 + charlength(str + 1);
 }
 
 constexpr bool equal_strings_compilation(const char * char1, const char *char2){
-    //CASO BASE: las 2 cadenas estan vacias
+    //CASO BASE: las 2 cadenas estan vacías
     if (*char1 == '\0' && *char2 == '\0') return true;
     
     //Si el largo de las cadenas es distinto

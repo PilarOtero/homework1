@@ -13,6 +13,7 @@ struct forwardList {
 };
 
 unique_ptr<node> create_node(int value){
+    //Crea un nodo con el valor indicad
     auto new_node = make_unique<node>();
     new_node->value = value;
     new_node->next = nullptr;       
@@ -21,6 +22,7 @@ unique_ptr<node> create_node(int value){
 }
 
 void push_front(unique_ptr<forwardList> &list, int value){
+    //Agrega al nodo al principio de la lista
     auto new_head = create_node(value);
 
     new_head->next = move(list->head);
@@ -30,6 +32,7 @@ void push_front(unique_ptr<forwardList> &list, int value){
 }   
 
 void push_back(unique_ptr<forwardList> &list, int value){
+    //Agrega al nodo al final de la lista (como tail)
     auto new_tail = create_node(value);
    
     if (! list->head) list->head = move(new_tail);
@@ -51,7 +54,7 @@ void insert(unique_ptr<forwardList> &list, int value, int position){
         return;
     }
 
-    //La posicion es mayor al tamaño de la lista
+    //La posición es mayor al tamaño de la lista
     if (position >= list->size){
         position = list->size; 
     }
@@ -62,6 +65,7 @@ void insert(unique_ptr<forwardList> &list, int value, int position){
         return;
     }
     
+    //El nodo se inserta en la posición indicada (para eso itero la lista)
     auto current = list->head.get();
     
     for (int i = 0; i < position - 1; i ++){
@@ -77,22 +81,26 @@ void insert(unique_ptr<forwardList> &list, int value, int position){
 
 
 void erase(unique_ptr<forwardList> &list, int position){
+    //Elimina el valor de la lista ubicado en la posición indicada
     if (position < 0){
         cout << "La posicion debe ser mayor a 0" << endl;
         return;
     }
-    
+
+    //La posición es mayor al tamaño de la lista, elimino el ultimo elemento
     if (position >= list->size){
         cout << "La posicion indicada se encuentra fuera del rango de la lista." << endl;
         position = list->size - 1;
     }
 
+    //Elimino el primer elemento
     if (position == 0){
         list->head = move(list->head->next);
         list->size --;
         return;
     }
-    
+
+    //Recorro la lista hasta llegar a la posición indicada y elimino
     auto current = list->head.get();
     
     for (int i = 0; i < position - 1; i ++){
@@ -104,6 +112,7 @@ void erase(unique_ptr<forwardList> &list, int position){
 }
 
 void print_list(unique_ptr<forwardList> &list){
+    //Recorre la lista para imprimir los valores (unidos con un "->")
     node * current = list->head.get();
 
     while (current){

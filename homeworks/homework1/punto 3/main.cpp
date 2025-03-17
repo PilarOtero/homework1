@@ -2,8 +2,10 @@
 #include "functions.cpp"
 
 int main(){
+    //Creo la lista
     unique_ptr<forwardList> list = make_unique<forwardList>();
 
+    //Tests de las funciones
     cout << "PUSH FRONT DE ELEMENTOS" << endl;
     push_front(list, 3);
     push_front(list, 2);
