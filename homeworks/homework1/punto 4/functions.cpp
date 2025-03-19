@@ -1,36 +1,38 @@
 #include <iostream>
 #include "main.h"
 
-/*JUSTIFICACIÓN DE LA ELECCIÓN DE STRING -> es un tipo de dato que se maneja de manera sencilla y, al no ser un puntero, 
-como en el caso de char *, no necesito liberar la memoria.*/
+int charlength(char * str){
+    if (*str == '\0') return 0;
+    return 1 + charlength(str + 1);
+}
 
-bool equal_strings(string str1, string str2){
+bool equal_chars(char * char1, char * char2){
     //Si las cadenas 2 están vacias, son iguales
-    if (str1.empty() && str2.empty()) return true;
+    if (char1 == '\0' && char2 == '\0') return true;
     
     //Si el largo de las cadenas es distinto, no son iguales
-    if (str1.length() != str2.length()) return false;
+    if (charlength(char1) != charlength(char2)) return false;
 
     //Si el primer caracter de la cadena es igual, se llama a la función con substr (crea un substring sin el primer caracter)
-    if (str1[0] == str2[0]) return equal_strings(str1.substr(1), str2.substr(1));
+    if (*char1 == *char2) return equal_chars(char1 + 1, char2 + 1);
     return false;
 }
 
 
 //VERIFICACIÓN EN TIEMPO DE COMPILACION
-constexpr int charlength(const char * str){
+constexpr int charlength_compilation(const char * str){
     if (*str == '\0') return 0;
     return 1 + charlength(str + 1);
 }
 
-constexpr bool equal_strings_compilation(const char * char1, const char *char2){
+constexpr bool equal_chars_compilation(const char * char1, const char *char2){
     //CASO BASE: las 2 cadenas estan vacías
     if (*char1 == '\0' && *char2 == '\0') return true;
     
     //Si el largo de las cadenas es distinto
-    if (charlength(char1) != charlength(char2)) return false;
+    if (charlength_compilation(char1) != charlength_compilation(char2)) return false;
 
-    if (*char1 == *char2) return equal_strings_compilation(char1 + 1, char2 + 1);
+    if (*char1 == *char2) return equal_chars_compilation(char1 + 1, char2 + 1);
     return false;
 
 }
