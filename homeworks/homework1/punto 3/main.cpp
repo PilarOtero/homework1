@@ -22,31 +22,31 @@ int main(){
 
     cout << "INSERT EN POSICIÓN 5" << endl;
     insert(list, 5, 5);
-    cout << "Lista despues de insertar el elemento: ";
+    cout << "Lista después de insertar el elemento: ";
     print_list(list);
     cout << "\n" << endl;
 
     cout << "INSERT EN POSICIÓN QUE NO EXISTE" << endl;
     insert(list, 7, 10);
-    cout << "Lista despues de insertar el elemento: ";
+    cout << "Lista después de insertar el elemento: ";
     print_list(list);
     cout << "\n" << endl;
     
     cout << "ERASE DEL ELEMENTO EN LA POSICIÓN 0" << endl;
     erase(list, 0); 
-    cout << "Lista despues de borrar el elemento: ";
+    cout << "Lista después de borrar el elemento: ";
     print_list(list);
     cout << "\n" << endl;
 
     cout << "ERASE DE ELEMENTO EN POSICIÓN INVALIDA" << endl;
     erase(list, -1);
-    cout << "Lista despues de borrar el elemento: ";
+    cout << "Lista después de borrar el elemento: ";
     print_list(list);
     cout << "\n" << endl;
 
     cout << "ERASE EN POSICIÓN MAYOR AL LARGO DE LA LISTA" << endl;
     erase(list, 10);
-    cout << "Lista despues de borrar el elemento: ";
+    cout << "Lista después de borrar el elemento: ";
     print_list(list);
 
     return 0;
