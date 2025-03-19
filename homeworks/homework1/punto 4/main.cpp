@@ -3,6 +3,7 @@
 int main(){
     string str1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     string str2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
+    string str3 = "Hola mundo";
 
     char * char1 = new char[str1.length()];
     char * char2 = new char[str2.length()];
@@ -14,7 +15,7 @@ int main(){
 
     constexpr const char * char3 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
     constexpr const char * char4 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor nunc quis metus vulputate hendrerit. ";
-    
+
     cout << "VERIFICACIÓN EN TIEMPO DE EJECUCIÓN\n" << endl;
     cout << "char1: " << char1 << "\n" << "char2: " << char2 << endl;
     if (equal_chars(char1, char2)){

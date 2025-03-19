@@ -2,6 +2,10 @@
 #include <cstring>
 #include "main.h"
 
+/*JUSTIFICACIÓN ELECCIÓN CHAR * -> este tipo de dato tiene una mayor eficiencia a la hora de manejar la memoria, al tiempo 
+que evita que se sobrecargue. Ademas, al no pertenecer a una librería (como en el caso de string), es una estructura de menor nivel (fácil manejar) 
+y tarda un poco menos  en la ejecución.
+*/
 
 bool equal_chars(char * char1, char * char2){
     //Si las cadenas 2 están vacias, son iguales

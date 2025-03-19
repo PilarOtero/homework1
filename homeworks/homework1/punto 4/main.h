@@ -3,8 +3,6 @@
 
 using namespace std;
 
-int charlength(char * char1);
-
 bool equal_chars(string str1, string str2);
 
 constexpr int charlength_compilation(const char * str); 
