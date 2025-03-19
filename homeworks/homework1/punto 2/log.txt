@@ -1,1 +1,0 @@
-[ERROR] <TRAGIC EVENT in line 24 from file main.cpp>

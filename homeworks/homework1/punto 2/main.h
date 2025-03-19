@@ -1,6 +1,6 @@
 using namespace std;
 
-enum class Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY, TRAGIC};
+enum class Severity {DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY, TRAGIC, OUT};
 
 const string get_severity (Severity severity);
 
