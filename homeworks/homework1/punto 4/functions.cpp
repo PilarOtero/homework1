@@ -1,17 +1,14 @@
 #include <iostream>
+#include <cstring>
 #include "main.h"
 
-int charlength(char * str){
-    if (*str == '\0') return 0;
-    return 1 + charlength(str + 1);
-}
 
 bool equal_chars(char * char1, char * char2){
     //Si las cadenas 2 están vacias, son iguales
-    if (char1 == '\0' && char2 == '\0') return true;
+    if (strlen(char1) == 0 && strlen(char2) == 0) return true;
     
     //Si el largo de las cadenas es distinto, no son iguales
-    if (charlength(char1) != charlength(char2)) return false;
+    if (strlen(char1) != strlen(char2)) return false;
 
     //Si el primer caracter de la cadena es igual, se llama a la función con substr (crea un substring sin el primer caracter)
     if (*char1 == *char2) return equal_chars(char1 + 1, char2 + 1);
@@ -20,9 +17,9 @@ bool equal_chars(char * char1, char * char2){
 
 
 //VERIFICACIÓN EN TIEMPO DE COMPILACION
-constexpr int charlength_compilation(const char * str){
-    if (*str == '\0') return 0;
-    return 1 + charlength(str + 1);
+constexpr int charlength_compilation(const char * char1){
+    if (*char1 == '\0') return 0;
+    return 1 + charlength_compilation(char1 + 1);
 }
 
 constexpr bool equal_chars_compilation(const char * char1, const char *char2){

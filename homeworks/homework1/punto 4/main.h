@@ -3,9 +3,11 @@
 
 using namespace std;
 
-bool equal_strings(string str1, string str2);
+int charlength(char * char1);
 
-constexpr int charlength(const char * str); 
+bool equal_chars(string str1, string str2);
 
-constexpr bool equal_strings_compilation(const char * char1, const char *char2);
+constexpr int charlength_compilation(const char * str); 
+
+constexpr bool equal_chars_compilation(const char * char1, const char *char2);
 
